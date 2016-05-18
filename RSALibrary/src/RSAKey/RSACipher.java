@@ -15,26 +15,30 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.ShortBufferException;
 
 public class RSACipher extends CipherSpi {
+	
+	public Key myKeyQ;
+	private Key myKeyP;
+	private int opMode;
 
 	@Override
-	protected byte[] engineDoFinal(byte[] arg0, int arg1, int arg2)
+	protected byte[] engineDoFinal(byte[] input, int inputoffset, int inputLen)
 			throws IllegalBlockSizeException, BadPaddingException {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return engineUpdate(input,inputoffset,inputLen);
 	}
 
 	@Override
-	protected int engineDoFinal(byte[] arg0, int arg1, int arg2, byte[] arg3,
-			int arg4) throws ShortBufferException, IllegalBlockSizeException,
+	protected int engineDoFinal(byte[] input, int inputoffset, int inputLen, byte[] ouput,
+			int outputoffset) throws ShortBufferException, IllegalBlockSizeException,
 			BadPaddingException {
 		// TODO Auto-generated method stub
-		return 0;
+		return engineUpdate(input,inputoffset,inputLen,ouput,outputoffset);
 	}
 
 	@Override
 	protected int engineGetBlockSize() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 	@Override
