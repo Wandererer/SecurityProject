@@ -59,7 +59,6 @@ public class RSACipher extends CipherSpi {
 			output=decrypt();
 		
 		myBaos.reset();
-		
 		return output;
 
 	
@@ -71,11 +70,10 @@ public class RSACipher extends CipherSpi {
 		// TODO Auto-generated method stub
 		byte[] buffer;
 		 buffer=engineDoFinal(input, inputOffset,inputLen );
-		 
 		 if(output.length-outputOffset<buffer.length)
 			 throw new ShortBufferException("Output longer than buffer");
 		 
-		 System.arraycopy(buffer, 0, output, outputOffset, buffer.length);
+		// System.arraycopy(buffer, 0, output, outputOffset, buffer.length);
 		 return buffer.length;
 	}
 
@@ -187,7 +185,7 @@ public class RSACipher extends CipherSpi {
 		int k=myKeySize;
 		BigInteger m=new BigInteger(1,message);
 		BigInteger c=RSA.rsaEncrypt((RSAPublicKey)myKey, m);
-		byte[] C=Util.I2OSP(c, k);
+		byte[] C=c.toByteArray();
 		
 		return C;
 	}
@@ -195,12 +193,12 @@ public class RSACipher extends CipherSpi {
 	private byte[] decrypt() throws IllegalBlockSizeException{
 		byte[] C=myBaos.toByteArray();
 		int k=myKeySize;
-		if(k!=C.length)
-			throw new IllegalBlockSizeException("decryption error");
+		//if(k!=C.length)
+			//throw new IllegalBlockSizeException("decryption error");
 		
 		BigInteger c=new BigInteger (1,C);
 		BigInteger m=RSA.rsaDecrypt((RSAPrivateKey)myKey, c);
-		byte[] M=Util.I2OSP(m, k-1);
+		byte[] M=m.toByteArray();
 		
 		return M;
 	}

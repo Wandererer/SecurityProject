@@ -19,7 +19,7 @@ public class RSATest {
 	public static void main(String[] args) throws UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException {
 
 		//String message ="This is test";
-		String message ="MinkihyungBabo";
+		String message ="Minkihyung";
 
 		Vector<Byte> test=new Vector<Byte>();
 		
@@ -39,7 +39,8 @@ public class RSATest {
 		PrivateKey privateKey = keyPair.getPrivate();
 		
 		byte[] messageBytes = message.getBytes("UTF8");
-		
+
+		System.out.println(messageBytes.length);
 		try {
 
 			RSACipher rsa=new RSACipher(publicKey,Cipher.ENCRYPT_MODE,1024);
@@ -48,8 +49,10 @@ public class RSATest {
 			
 			byte[] encryptMsg = rsa.engineDoFinal(messageBytes, 0, messageBytes.length);;
 			String encryptmsg=new String(encryptMsg);
+			
+			System.out.println(encryptMsg.length);
 		
-			System.out.println("Encrypt msg: "+encryptMsg);
+			System.out.println("Encrypt msg: "+encryptmsg);
 				
 			rsa=new RSACipher(privateKey,Cipher.DECRYPT_MODE,1024);	
 			rsa.engineInit(Cipher.DECRYPT_MODE, privateKey, secure);	
