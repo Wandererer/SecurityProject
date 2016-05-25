@@ -182,7 +182,6 @@ public class RSACipher extends CipherSpi {
 	
 	private byte[] encrypt() throws IllegalBlockSizeException{
 		byte[] message= myBaos.toByteArray();
-		int k=myKeySize;
 		BigInteger m=new BigInteger(1,message);
 		BigInteger c=RSA.rsaEncrypt((RSAPublicKey)myKey, m);
 		byte[] C=c.toByteArray();
@@ -192,7 +191,6 @@ public class RSACipher extends CipherSpi {
 	
 	private byte[] decrypt() throws IllegalBlockSizeException{
 		byte[] C=myBaos.toByteArray();
-		int k=myKeySize;
 		//if(k!=C.length)
 			//throw new IllegalBlockSizeException("decryption error");
 		

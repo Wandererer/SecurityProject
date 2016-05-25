@@ -3,6 +3,7 @@ package RSAKey;
 import java.math.BigInteger;
 import java.security.interfaces.RSAPublicKey;
 
+@SuppressWarnings("serial")
 public class RSAPublicKeyStore implements RSAPublicKey {
 
 	private BigInteger n,e;

@@ -1,7 +1,6 @@
 package RSAKey;
 
 import java.math.BigInteger;
-import java.security.interfaces.RSAPrivateCrtKey;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
@@ -14,8 +13,6 @@ public class RSA {
 		
 		BigInteger e = publicKey.getPublicExponent();
 		BigInteger n = publicKey.getModulus();
-
-		BigInteger nMinusOne = n.subtract(BigInteger.ONE);
 
 		BigInteger c = m.modPow(e,n);
 		

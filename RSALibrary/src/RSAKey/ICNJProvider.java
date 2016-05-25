@@ -1,9 +1,13 @@
 package RSAKey;
 
 import java.security.AccessController;
-import java.security.Provider;
 
 public final class ICNJProvider extends java.security.Provider{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private static final String NAME = "ICNJ";
 
@@ -12,6 +16,7 @@ public final class ICNJProvider extends java.security.Provider{
 	private static final String INFO = "ICNJ RSA Provider";
 
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ICNJProvider() {
 		super(NAME, VERSION, INFO);
 		AccessController.doPrivileged(new java.security.PrivilegedAction() {

@@ -5,7 +5,7 @@ import java.security.KeyPair;
 import java.security.KeyPairGeneratorSpi;
 import java.security.SecureRandom;
 
-public class RSAKeyGenerator extends KeyPairGeneratorSpi {
+public class RSAKeyPairGenerator extends KeyPairGeneratorSpi {
 
 	private static final BigInteger E = BigInteger.valueOf(65537);
 	

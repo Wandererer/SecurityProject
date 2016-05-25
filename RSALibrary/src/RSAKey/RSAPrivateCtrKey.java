@@ -2,6 +2,7 @@ package RSAKey;
 
 import java.math.BigInteger;
 
+@SuppressWarnings("serial")
 public class RSAPrivateCtrKey extends RSAPrivateKeyStore {
 	
 	

@@ -33,7 +33,7 @@ public class JCETest {
 		byte[] messageBytes = message.getBytes("UTF8");
 
 		// Encrypt the message with the public key.
-		Cipher cipher = Cipher.getInstance("RSA/ECB/OAEPPadding","ISNetworks");
+		Cipher cipher = Cipher.getInstance("RSA");
 		cipher.init(Cipher.ENCRYPT_MODE, publicKey);
 		byte[] encryptedMessage = cipher.doFinal(messageBytes);
 
