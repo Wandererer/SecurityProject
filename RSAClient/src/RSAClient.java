@@ -70,7 +70,7 @@ public class RSAClient {
 					oos.writeObject(new Store("S", null, scan.next(), 0, null));
 					if (ois == null) {
 						ois = new ObjectInputStream(in);
-						System.out.println("테스트");
+						//System.out.println("테스트");
 					}
 				}
 				store = ((Store)ois.readObject());
@@ -78,10 +78,9 @@ public class RSAClient {
 
 			if (store.ip != null) {
 				cs = new Chat(store.ip, store.port, mYpublicKey);
-			} else {
-				System.out.println("check");
 			}
 			// 메세지 전송 부분
+			scan.nextLine();
 			cs.seticnj(icnj);
 			cs.startchat(store.key, scan);
 
@@ -201,7 +200,7 @@ class Chat {
 				try {
 					byte[] encryptMsg = icnj.Encrypt(scan.nextLine(), key);
 
-					//System.out.println(new String(encryptMsg));
+					System.out.println("보낼 암호문 : " + new String(encryptMsg));
 
 					dos.write(encryptMsg);
 					//dos.writeUTF(scan.nextLine());
@@ -228,6 +227,8 @@ class Chat {
 				try {
 					byte[] encryptMsg = new byte[128];
 					dis.read(encryptMsg);
+					
+					System.out.println("받은 암호문 : " + new String(encryptMsg));
 
 					System.out.println(icnj.Decrypt(encryptMsg));
 
